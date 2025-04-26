@@ -29,7 +29,7 @@ function Volunteer() {
   return (
     <div className="whole">
       <div className="left">
-        <img src="./src/assets/formimg.svg" alt="Form Illustration" />
+        <img src="./src/assets/formimg.svg" alt="Form Illustration"/>
       </div>
       <div className="right">
         <h1>Register as a Volunteer</h1>
