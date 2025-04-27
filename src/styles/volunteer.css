@@ -1,27 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600;700&display=swap');
 
 .whole {
-
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 body {
     padding: 0;
     margin: 0;
     background: #151515;
-    background-image: url('./volubg.svg');
-    width: 100vw;
+    background-image: url('../assets/volubg.svg') !important;
+    width: 100%;
 }
 
 .whole h1 {
+    margin: 3rem 0 1rem 0;
     color: var(--Neutraul-01---DDDDD, #DDD);
     font-family: Inter;
     font-size: 2.45975rem;
     font-style: normal;
     font-weight: 900;
     line-height: 2.95169rem;
-    /* 120% */
     letter-spacing: -0.04919rem;
 }
 
@@ -30,6 +30,7 @@ body {
     flex-direction: column;
     align-items: start;
     gap: 1rem;
+    padding-top: 0.5rem;
 }
 
 .left, .right {
@@ -86,6 +87,26 @@ textarea {
     height: 15.68075rem;
 }
 
+.file-input {
+    display: none !important;
+}
+
+.file-label{
+    display: flex;
+    padding: 7px 25px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    background: #2D2D2D;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .whole label {
     color: var(--Neutraul-03---808080, #808080);
     font-family: Karla;
@@ -107,6 +128,7 @@ form .submitbutton {
     font-size: 1.22988rem;
     cursor: pointer;
     transition: background 0.3s ease;
+    margin: 1rem 0 3rem 0;
 
     /* Custom corners via clip-path */
     clip-path: polygon(
@@ -126,8 +148,11 @@ form .submitbutton:hover {
 .left img {
     animation: rotate360 4s linear infinite;
     transform-origin: center;
-    width: 100%;
+    width: 90%;
     height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @keyframes rotate360 {
