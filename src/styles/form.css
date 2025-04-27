@@ -6,6 +6,27 @@
     justify-content: space-between;
 }
 
+.whole form select {
+    display: flex;
+    padding: 1.26831rem 1.22988rem;
+    align-items: flex-start;
+    gap: 0.61494rem;
+    align-self: stretch;
+    border-radius: 0.61494rem;
+    background: var(--Neutraul-09---101010, #101010);
+    color: var(--Neutraul-03---808080, #808080);
+    font-family: Karla;
+    font-size: 1.22988rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.02463rem;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -51,7 +72,26 @@ textarea {
     font-size: 1.22988rem;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
+    line-height: normal;    .whole form select {
+        display: flex;
+        padding: 1.26831rem 1.22988rem;
+        align-items: flex-start;
+        gap: 0.61494rem;
+        align-self: stretch;
+        border-radius: 0.61494rem;
+        background: var(--Neutraul-09---101010, #101010);
+        color: var(--Neutraul-03---808080, #808080);
+        font-family: Karla;
+        font-size: 1.22988rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.02463rem;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        width: 100%;
+    }
     letter-spacing: -0.02463rem;
 
     border: none;
@@ -81,6 +121,7 @@ textarea {
 .whole .form-group {
     display: flex;
     gap: 1rem;
+    width: 100%;
 }
 
 textarea {
