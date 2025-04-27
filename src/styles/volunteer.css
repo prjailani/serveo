@@ -33,7 +33,7 @@ body {
     padding-top: 0.5rem;
 }
 
-.left, .right {
+.right {
     width: 45vw;
 }
 
@@ -145,16 +145,6 @@ form .submitbutton:hover {
     background: #4a2c46; /* slightly lighter for hover effect */
 }
 
-.left img {
-    animation: rotate360 4s linear infinite;
-    transform-origin: center;
-    width: 90%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 @keyframes rotate360 {
     from {
         transform: rotate(0deg);
@@ -171,20 +161,8 @@ form .submitbutton:hover {
         padding: 2rem;
     }
 
-    .left,
     .right {
         width: 100%;
-    }
-
-    .left {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem;
-    }
-
-    .left img {
-        width: 80%;
-        max-width: 300px;
     }
 
     form .form-group {

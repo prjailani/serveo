@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import LeftBall from "./LeftBall";
 
 // Extend the Window interface to include the ethereum property
 declare global {
@@ -230,9 +231,7 @@ function Volunteer() {
 
   return (
     <div className="whole">
-      <div className="left">
-        <img src="./src/assets/formimg.svg" alt="Form Illustration" />
-      </div>
+      <LeftBall></LeftBall>
       <div className="right">
         <h1>Register as a Volunteer</h1>
         <form id="volunteerForm" onSubmit={handleSubmit}>
