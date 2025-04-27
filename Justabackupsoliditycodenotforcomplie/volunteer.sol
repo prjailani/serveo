@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 contract VolunteerRegistration {
@@ -16,10 +15,35 @@ contract VolunteerRegistration {
         DateTimeAvailability[] availabilities;
     }
 
+    struct Event {
+        string title;
+        string skillsRequired;
+        string coverPictureHash;
+        string description;
+        string category;
+        string volunteeringType;
+        int256 locationLongitude;
+        int256 locationLatitude;
+        string startDateTime;
+        string endDateTime;
+        string timezone;
+        uint256 ageRequirement;
+        uint256 numberOfVolunteersNeeded;
+        uint256 reputationPoints;
+        bool certificateAvailable;
+        bool preLearningModule;
+        bool allowSquadParticipation;
+        string preLearningVideosHash;
+        string preLearningMaterialsHash;
+    }
+
     mapping(address => Volunteer) private volunteers;
-    mapping(address => bool) public isRegistered; // ✅ new: track if someone registered
+    mapping(address => bool) public isRegistered; 
+
+    mapping(address => Event[]) private organizationEvents;
 
     event VolunteerRegistered(address indexed volunteer);
+    event EventCreated(address indexed organization, uint256 eventId);
 
     function registerVolunteer(
         string memory _displayName,
@@ -37,13 +61,13 @@ contract VolunteerRegistration {
         v.profileBio = _profileBio;
         v.profilePictureHash = _profilePictureHash;
 
-        delete v.availabilities; // Reset
+        delete v.availabilities;
 
         for (uint256 i = 0; i < _dates.length; i++) {
             v.availabilities.push(DateTimeAvailability(_dates[i], _times[i]));
         }
 
-        isRegistered[msg.sender] = true; // ✅ Mark as registered
+        isRegistered[msg.sender] = true;
         emit VolunteerRegistered(msg.sender);
     }
 
@@ -55,7 +79,7 @@ contract VolunteerRegistration {
         string[] memory dates,
         string[] memory times
     ) {
-        require(isRegistered[_volunteer], "Volunteer not registered"); // ✅ Safety
+        require(isRegistered[_volunteer], "Volunteer not registered");
 
         Volunteer storage v = volunteers[_volunteer];
         uint256 length = v.availabilities.length;
@@ -68,5 +92,15 @@ contract VolunteerRegistration {
         }
 
         return (v.displayName, v.skills, v.profileBio, v.profilePictureHash, dates, times);
+    }
+
+    // ✅ Solution: Pass Event struct as input
+    function createEvent(Event memory _eventData) public {
+        organizationEvents[msg.sender].push(_eventData);
+        emit EventCreated(msg.sender, organizationEvents[msg.sender].length - 1);
+    }
+
+    function getOrganizationEvents(address _organization) public view returns (Event[] memory) {
+        return organizationEvents[_organization];
     }
 }

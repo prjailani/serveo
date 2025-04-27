@@ -13,22 +13,254 @@ import "../styles/form.css";
 // 👉 Paste your Contract Address and ABI here
 const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const CONTRACT_ABI = [
-  {
-    "inputs": [
-      { "internalType": "string", "name": "_orgName", "type": "string" },
-      { "internalType": "string", "name": "_tagline", "type": "string" },
-      { "internalType": "string", "name": "_orgType", "type": "string" },
-      { "internalType": "string", "name": "_email", "type": "string" },
-      { "internalType": "string", "name": "_latitude", "type": "string" },
-      { "internalType": "string", "name": "_longitude", "type": "string" },
-      { "internalType": "string", "name": "_description", "type": "string" },
-      { "internalType": "string", "name": "_logoHash", "type": "string" }
-    ],
-    "name": "registerOrganization",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "organization",
+				"type": "address"
+			}
+		],
+		"name": "OrganizationRegistered",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_orgName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_tagline",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_orgType",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_email",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_latitude",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_longitude",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_logoHash",
+				"type": "string"
+			}
+		],
+		"name": "registerOrganization",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_displayName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_skills",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_profileBio",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_profilePictureHash",
+				"type": "string"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_dates",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "_times",
+				"type": "string[]"
+			}
+		],
+		"name": "registerVolunteer",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "volunteer",
+				"type": "address"
+			}
+		],
+		"name": "VolunteerRegistered",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_organization",
+				"type": "address"
+			}
+		],
+		"name": "getOrganization",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "orgName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "tagline",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "orgType",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "email",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "latitude",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "longitude",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "logoHash",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_volunteer",
+				"type": "address"
+			}
+		],
+		"name": "getVolunteer",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "displayName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "skills",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "profileBio",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "profilePictureHash",
+				"type": "string"
+			},
+			{
+				"internalType": "string[]",
+				"name": "dates",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "times",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "isOrganizationRegistered",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "isRegistered",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
 ];
 
 function Organization() {
