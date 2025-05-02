@@ -4,7 +4,7 @@ import LeftBall from "./LeftBall";
 // Extend the Window interface to include the ethereum property
 declare global {
   interface Window {
-    ethereum?: any;
+	ethereum?: any;
   }
 }
 import { ethers } from "ethers";
@@ -274,7 +274,6 @@ function Organization() {
   const [logoHash, setLogoHash] = useState(""); // optional
 
   // Placeholder for organization details if needed
-  const [organizationDetails, setOrganizationDetails] = useState<any>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -287,18 +286,26 @@ function Organization() {
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-      const contract = new ethers.Contract(
-        CONTRACT_ADDRESS,
-        CONTRACT_ABI,
-        signer
-      );
+	  const contract = new ethers.Contract(
+		CONTRACT_ADDRESS,
+		CONTRACT_ABI,
+		signer
+	  );
 
-      // Call your contract's registerOrganization method here
-      // Example:
-      // const tx = await contract.registerOrganization(orgName, tagline, orgType, email, latitude, longitude, description, logoHash);
+	  // Call your contract's registerOrganization method here
+	  const tx = await contract.registerOrganization(
+		orgName,
+		tagline,
+		orgType,
+		email,
+		latitude,
+		longitude,
+		description,
+		logoHash
+	  );
 
-      // await tx.wait();
-      alert("Organization registered successfully!");
+	  await tx.wait();
+	  alert("Organization registered successfully!");
 
       // Reset form if needed
       setOrgName("");
